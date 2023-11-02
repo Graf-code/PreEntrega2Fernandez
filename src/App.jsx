@@ -1,9 +1,10 @@
-import './App.css'
 import NavBar from './Components/NavBar/NavBar';
 import Titulo from './Components/Titulo/Titulo';
 import TituloForm from './Components/TituloForm/TItuloForm';
 import Card from './Components/Card/Card'
 import Formulario from './Components/Formulario/Formulario';
+import ProductListContainer from './Components/ItemListContainer/ItemListContainer';
+import './App.css'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     <Card />
     <TituloForm />
     <Formulario />
+    <ProductListContainer greeting='Bienvenidos a Lucode'/>
     </>
   )
 }
