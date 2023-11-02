@@ -1,0 +1,59 @@
+.CardItem {
+    background-color: black;
+}
+
+
+
+.lala {
+    background-color: rgb(241, 238, 238);
+}
+
+.card__cursos {
+  padding: .5rem;
+  /* background-color: orange; */
+  border: 2px solid rgb(239, 235, 235);
+  background: rgb(255,255,255);
+  background: linear-gradient(186deg, rgba(255,255,255,0.9) 0%, rgba(1,255,154,1) 52%, rgba(15,136,246,1) 100%);
+  border-radius: 10px;
+  margin: 5px;
+  overflow: hidden;
+  /* box-shadow: 0px 4px 8px rgba(243, 241, 241, 0.945); */
+}
+
+.card__cursos:hover {
+  box-shadow: 0px 4px 8px rgba(243, 241, 241, 0.945);
+}
+
+
+/* Estilo normal del SVG dentro de la tarjeta */
+.card-img, .card-img-top {
+  fill: #333; /* Color por defecto */
+  transition: transform 0.3s; /* Transición suave para la transformación */
+}
+
+/* Efecto hover del SVG dentro de la tarjeta */
+.card-img:hover, .card-img-top:hover {
+  fill: #FF5733; /* Color al pasar el mouse */
+  transform: scale(1.1); /* Escala ligeramente más grande en el eje Z */
+}
+
+.card__with {
+  width: 50rem;
+}
+/* 
+.card-body {
+    border: 2px solid rgb(0, 0, 0);
+    
+} */
+
+.card__cursos .card-img-top {
+  width: 100px; /* Define el ancho deseado */
+  height: 100px; /* Define la altura deseada */
+}
+
+.btn__detalle {
+  background-color: orange; /* Color naranja */
+  color: white; /* Texto en blanco para contraste */
+  /* Otras propiedades de estilo que desees */
+}
+
