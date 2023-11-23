@@ -2,34 +2,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: #38E54D; */
     color: rgb(241, 236, 236);
     padding: 5px;
-  }
+}
 
-  .navbar-expand-lg .navbar-collapse .btn__inicio {
+.navbar-expand-lg .navbar-collapse .btn__home {
     background-color: #fd7e14;
     color: #ffffff;
-  }
+}
 
-  .navbar-expand-lg .navbar-collapse .btn__categorias {
+.navbar-expand-lg .navbar-collapse .btn__categories {
     background-color: rgb(254, 252, 252);
     color: rgb(17, 16, 16);
-  }
+}
 
-
-  .nav__container {
+.nav__container {
     display: flex;
     justify-content: space-around;
-  }
+}
 
 .btn {
   color: rgb(13, 13, 13);
   background-color: transparent; 
 }
 
-.btn.btn__categorias, 
-.btn.btn__categorias:hover
+.btn.btn__categories, 
+.btn.btn__categories:hover
 {
   color: rgb(17, 17, 17);
   background-color: white; 
@@ -39,7 +37,7 @@ a.btn {
   color: white;
 }
 
-a.nav__logo{ 
+a.nav__logo { 
   color: white;
   font-family: 'agbalumo', Arial, Helvetica, sans-serif;
   transition: transform 0.5s; 
@@ -50,24 +48,19 @@ a.nav__logo:hover {
   color: #fd7e14;
 }
 
-button.boton__despliegue{
+button.button__display {
   background-color: white;
 }
 
 .cart__form {
   display: flex;
   justify-content:space-evenly;
+  align-items: center;
 }
 
 .cart__padding {
-margin-right: 10px;
+  margin-right: 10px;
 }
-
-.cart__padding svg{
-  width: 35px;
-  height: 35px;
-  color: #fd7e14;
-  }
 
 .con__links {
   display: flex;

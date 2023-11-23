@@ -1,15 +1,28 @@
-import { IoCart } from "react-icons/io5";
-import { ItemCount } from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
+import cartLogo from '/assets/cart.svg'
 
-export const CartWidget = ({ itemCount }) => {
+// Componente CartWidget
+const CartWidget = () => {
+   // Obtener la cantidad total de productos en el carrito desde el contexto
+    const { totalQuantity }  = useContext(CartContext);
+   
+   // Renderizar el componente CartWidget
     return (
-        <div>
-            {ItemCount > 0 && <span className="cart__counter">{itemCount}</span>}
-            <IoCart />
-        </div>
-    );
+               <>
+                  {/* Enlace al carrito */}
+                  <Link to='/cart' className="btn cartwidget">
+                     {/* Icono del carrito */}
+                     <img className='car__buy' src={cartLogo} alt='cart-widget' />
+                     {/* Mostrar la cantidad total si hay productos en el carrito */}
+                     {totalQuantity > 0 && <span className="cart__quantity">{totalQuantity}</span>}
+                  </Link>
+               </>
+         );
 }
 
+export default CartWidget;
 
 
 
@@ -21,14 +34,4 @@ export const CartWidget = ({ itemCount }) => {
 
 
 
-// import { IoCart } from "react-icons/io5";
 
-// export const CartWidget = () => {
-//     return (
-//         <div>
-//             3 <IoCart />
-//         </div>
-//     )
-// }
-
-// export default CartWidget - Manera tradicional de exportar

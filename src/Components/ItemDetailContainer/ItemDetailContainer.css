@@ -1,0 +1,10 @@
+div.ItemDetailContainer {
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+    margin-top: 5rem;
+}
+
+p.card-text {
+    font-weight: 600;
+}

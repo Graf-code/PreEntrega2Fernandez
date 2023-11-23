@@ -1,54 +1,27 @@
 import { useState } from 'react';
 
+
+// Componente Filter
 export const Filter = ({ children, products }) => {
+  // Estado local para almacenar el estado del filtro
   const [filterState, setFilterState] = useState('');
 
+  // Función para manejar cambios en el filtro
   const handleFilterChange = (e) => {
     setFilterState(e.target.value);
   };
 
+  // Función para filtrar productos basados en el estado del filtro
   const filterProducts = () => {
     return products.filter((product) =>
       product.name.toLowerCase().includes(filterState.toLowerCase())
     );
   };
 
-  return children({ products: filterProducts(), filterState, handleFilterChange });
+   // Renderizar el componente Filter con los datos filtrados y el estado del filtro
+  return children({ 
+    products: filterProducts(), 
+    filterState, 
+    handleFilterChange 
+  });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from 'react'
-
-// export const Filter = ({children, products}) => {
-//     const [filterState, setFilterState] = useState('')
-//     const handleFilterChange = (e) => {
-//         setFilterState(e.target.value)
-//     }
-//     return (
-//         children({products, filterState, handleFilterChange})
-//     )
-// }
-

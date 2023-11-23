@@ -1,43 +1,62 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../asynMock/asyncMock";
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import { Link, useParams } from "react-router-dom";
-import Card from 'react-bootstrap/Card';
+import { Spinner } from "react-bootstrap";
+
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-function ItemListContainer({ greeting }) {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const { category } = useParams();
-    // const { itemId } = useParams();
 
-    useEffect(() => {
-        setTimeout(() => {
-            getProducts() 
-                .then((data) => {
-                    if (category) {
-                        setProducts(data.filter((product) => product.category === category));
-                        // setProducts(data.filter((products) => products.category === itemId));
-                    } else {
-                        setProducts(data);
-                    }
-                    setLoading(false);
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        }, 1000);
-    }, [category]);
+// Componente ItemListContainer
+function ItemListContainer() {
+  // Estados para almacenar productos y controlar el estado de carga
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { category, itemId } = useParams();
+
+  // Efecto para cargar los productos al montar el componente o cuando cambie la categoría
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const dbFirestore = getFirestore();
+      const productsCollection = collection(dbFirestore, 'products');
+      let filterQuery;
+
+      if (category) {
+        // Si hay una categoría, aplicamos el filtro
+        filterQuery = query(productsCollection, where('category', '==', category));
+      } else {
+        // Si no hay categoría, traemos todos los productos
+        filterQuery = productsCollection;
+      }
+
+      try {
+        const snapshot = await getDocs(filterQuery);
+        setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+
+      setLoading(false);
+    };
+
+    fetchProducts();
+  }, [category]);
+  
+    // Renderizar los productos en tarjetas usando Bootstrap
     return (
         <>
-          <Row xs={1} md={4} className="g-2 m-auto card__with">
+          <Row xs={1} md={3} className="row g-2 m-auto card__with">
             {loading ? (
-              <h2 className="sec__carga">Cargando...</h2>
+              <div className="spinner">
+                <Spinner animation="grow" variant="primary" size="lg" style={{ width: '10rem', height: '10rem' }}>
+                  <span>Cargando...</span>
+                </Spinner>
+              </div>
             ) : (
               products.map((product) => (
-                <Col key={product.name}>
-                  <div className="card__cursos">
-                    <img src={product.img} className="card-img-top" alt="..." />
+                <Col key={product.id}>
+                  <div className="card__item__list">
+                    <img src={product.img} className="card__img__top" alt="..." />
                     <div className="card-body">
                       <h5 className="card-title">{product.name}</h5>
                       <p className="card-text">
@@ -46,7 +65,7 @@ function ItemListContainer({ greeting }) {
                         Precio: ${product.price}
                       </p>
                       <Link to={`/item/${product.id}`}>
-                        <button className="btn btn-light w-100">Detalle</button>
+                        <button className="btn btn-success w-100"> Ver Detalle</button>
                       </Link>
                     </div>
                   </div>
@@ -56,5 +75,5 @@ function ItemListContainer({ greeting }) {
           </Row>
         </>
       );
-              }      
+}      
 export default ItemListContainer

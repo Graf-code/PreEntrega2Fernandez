@@ -1,12 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
-import { CartWidget } from "../CartWidget/CartWidget";
+import CartWidget from '../CartWidget/CartWidget';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+
+// Componente NavBar
 function NavBar() {
+  // Se renderiza cada vez que cambia el estado o las props
   return (
     <Navbar expand="lg" className="nav__color w-100">
       <Container className="nav__container">
@@ -14,7 +17,7 @@ function NavBar() {
           LuCode
         </Navbar.Brand>
         <Navbar.Toggle
-          className="boton__despliegue"
+          className="button__display"
           aria-controls="basic-navbar-nav"
         />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -22,7 +25,7 @@ function NavBar() {
             <div className="con__links">
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn__inicio" : "btn"
+                  isActive ? "btn btn__home" : "btn"
                 }
                 to="/"
               >
@@ -30,7 +33,7 @@ function NavBar() {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn__categorias" : "btn"
+                  isActive ? "btn btn__categories" : "btn"
                 }
                 to="/category/Programacion-Web"
               >
@@ -38,7 +41,7 @@ function NavBar() {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn__categorias" : "btn"
+                  isActive ? "btn btn__categories" : "btn"
                 }
                 to="/category/Bases-de-Datos"
               >
@@ -46,7 +49,7 @@ function NavBar() {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn__categorias" : "btn"
+                  isActive ? "btn btn__categories" : "btn"
                 }
                 to="/category/Lenguajes-de-Programacion"
               >
@@ -61,7 +64,7 @@ function NavBar() {
               </Link>
             </div>
             <Form className="d-flex ms-auto">
-              {" "}
+              {/* {" "} */}
               <Form.Control
                 type="search"
                 placeholder="Busque su Curso"
