@@ -8,7 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 # LuCode
-    - Link de Netlify: 
+    - Link de Netlify: https://elegant-naiad-b18bde.netlify.app
 
 LuCode es mi proyecto final, en el cual he dsarrollado una aplicaion web utilizando tecnologias como React, Firebase, Bootstrap, React Bootstrap y React Icons. Mas abajo encontraran la tabla con las dependencias que se han utilizado para el proyecto y una breve descripcion de cada una de ellas.
 
